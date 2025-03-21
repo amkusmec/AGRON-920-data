@@ -81,7 +81,7 @@ gaussian_kernel <- function(X, h = 1, prob = NULL, y = NULL, verbose = FALSE) {
     if (verbose) cat("Optimizing bandwidth...\n")
     
     sol <- optim(c(1, 3), margh.fun, y = y, D = D, q = q, method = "L-BFGS-B", 
-                 lower = c(0.05, 0.05), upper = c(6, 30), prior = "gamma", nuh = 3, 
+                 lower = c(0.01, 0.05), upper = c(6, 30), prior = "gamma", nuh = 3, 
                  Sch = 1.5, control = list(trace = 4L))
     h <- sol$par[1]
     if(verbose) cat("Optimal h =", h, "; fn evals =", sol$counts[1], "\n")
